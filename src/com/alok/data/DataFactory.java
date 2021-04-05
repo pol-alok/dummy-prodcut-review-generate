@@ -36,12 +36,6 @@ public class DataFactory {
 
     private static int SEQ = 101;
 
-    private boolean isPrime(long num) {
-        for (int i = 2; i <= Math.sqrt(num); i++)
-            if (num % i == 0) return false;
-        return true;
-    }
-
     private BigDecimal getRandomPrice() {
         BigDecimal max = new BigDecimal(30);
         BigDecimal randFromDouble = BigDecimal.valueOf(Math.random());
@@ -51,8 +45,9 @@ public class DataFactory {
     private LocalDate getRandomDate(Random rd) {
         LocalDate start = LocalDate.now();
         long days = ChronoUnit.DAYS.between(start, LocalDate.of(2021, Month.MAY, 1));
-        if (!isPrime(days)) {
-            return start.plusDays(rd.nextInt((int) days + 1));
+        long daysToAdd = rd.nextInt((int) days + 1);
+        if (daysToAdd % 5 != 0) {
+            return start.plusDays(daysToAdd);
         } else {
             return null;
         }

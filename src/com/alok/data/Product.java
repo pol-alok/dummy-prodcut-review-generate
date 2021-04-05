@@ -13,7 +13,7 @@ import static java.math.RoundingMode.HALF_UP;
  */
 public class Product {
 
-    private static final DateTimeFormatter dateFormat =  DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     private boolean isFood;
     private final int id;
@@ -61,6 +61,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return ((isFood) ? "F" : "D") + ", " + id + ", " + name + ", " + getPrice() + ", " + rating + ", " + ((bestBefore != null) ? dateFormat.format(bestBefore) : "");
+        return ((isFood) ? "F" : "D") + ", " + id + ", " + name + ", " + getPrice() + ", " + rating + ((bestBefore != null) ? ", " + dateFormat.format(bestBefore) : "");
     }
 }
